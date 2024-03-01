@@ -36,17 +36,19 @@ export const POST: APIRoute = async ({ request }) => {
   const QueryContactSourceID = sources[utmSource] || null;
 
   try {
-    // whitefield -> https://script.google.com/macros/s/AKfycbxzbQXgr7Xp5EyrgqVa79Bl7gJSyCOAk2XuU7j3iT2i8HLQhF5HEATwXwMVEV3SxDZNvQ/exec
-    const response = await fetch('https://script.google.com/macros/s/AKfycbz3c0TfOjZtKOB4hSSLR2Iv7S4nbkIcpWk2y8DRs_Ff4vRcoiqE-9Ub8KpcAyKZBXJP/exec', {
+    // sending data as per campus
+    const url = campus === "Whitefield" ? 'https://script.google.com/macros/s/AKfycbxzbQXgr7Xp5EyrgqVa79Bl7gJSyCOAk2XuU7j3iT2i8HLQhF5HEATwXwMVEV3SxDZNvQ/exec' : 'https://script.google.com/macros/s/AKfycbyT7hPeTfkipgAifM2vipR3hxW4pIOtNfK9Gqr0SqjjHo366OHCl4iom_G1MKtyMs1h/exec';
+
+    const response = await fetch(url, {
       method: 'POST',
       body: formData
     });
     const data = await response.json();
-    console.log('data', data);
+    // console.log('data', data);
+    console.log(campus)
   } catch (e) {
     console.error(e);
   }
-
 
   // Validate the data - you'll probably want to do more than this
 
