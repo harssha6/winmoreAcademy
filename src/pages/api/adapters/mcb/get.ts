@@ -33,6 +33,7 @@ let apiResponse = {
         "LocationID": 34,
         "Pincode": "560075",
         classes: [
+           "3620",
            "3610",
            "314",
            "315",
@@ -51,15 +52,21 @@ let apiResponse = {
   ],
   classes: [
     {
+        "ClassID": 3620,
+        "ClassName": "Daycare",
+        "BoardID": 1
+    },
+    {
         "ClassID": 3486,
-        "ClassName": "Playschool",
+        "ClassName": "Nursery",
         "BoardID": 1
     },
     {
         "ClassID": 3610,
-        "ClassName": "Playschool",
+        "ClassName": "Nursery",
         "BoardID": 1
     },
+
     {
         "ClassID": 314,
         "ClassName": "LKG",
@@ -209,13 +216,13 @@ apiResponse = {
     ...apiResponse,
     branches: apiResponse.branches.map(branch => ({
         ...branch,
-        classes: branch.classes.map((c) => 
+        classes: branch.classes.map((c) =>
             apiResponse.classes.find(classObj => classObj['ClassID'] === Number(c))
         ),
     })
 )}
-  
-  
+
+
 
 
 export const branches = [
